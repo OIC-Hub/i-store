@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\pages\PagesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\pages\PagesController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\Admin\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,7 @@ Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/product', [PagesController::class, 'product'])->name('page.product');
 
 //Admin Controller
+
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/add-product', [AdminProductController::class, 'add'])->name('admin.product.add');
+Route::post('/admin/add-product', [AdminProductController::class, 'store'])->name('admin.upload.product');
